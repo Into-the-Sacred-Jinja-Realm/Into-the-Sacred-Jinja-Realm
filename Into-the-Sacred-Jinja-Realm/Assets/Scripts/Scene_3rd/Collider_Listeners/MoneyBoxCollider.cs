@@ -6,9 +6,9 @@ public class MoneyBoxCollider : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject PlayerHands;
     public GameObject Coin;
-    private CameraMovement CameraMovement;
-    private BloomController BloomController;
-    private KamiAppear kamiAppear;
+    [SerializeField]private CameraMovement CameraMovement;
+    [SerializeField]private BloomController BloomController;
+    [SerializeField]private KamiAppear kamiAppear;
     private Animator playerAnim;
 
     public GameObject CheckPoint;
@@ -16,9 +16,6 @@ public class MoneyBoxCollider : MonoBehaviour
     void Start()
     {
         playerAnim = PlayerHands.GetComponent<Animator>();
-        CameraMovement = FindFirstObjectByType<CameraMovement>();
-        BloomController = FindFirstObjectByType<BloomController>();
-        kamiAppear = FindFirstObjectByType<KamiAppear>();
         StartCoroutine(kamiAppear.KamiDisappearTime());
     }
 

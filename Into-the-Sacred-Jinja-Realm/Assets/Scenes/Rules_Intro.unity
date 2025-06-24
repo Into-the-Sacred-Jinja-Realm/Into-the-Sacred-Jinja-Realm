@@ -1108,6 +1108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34eab31d7d587514eacd197a38308cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  washCollider: {fileID: 0}
   BackGroundImg: {fileID: 889563658}
   StartImage: {fileID: 1313751319}
   StartImgText: {fileID: 250630093}

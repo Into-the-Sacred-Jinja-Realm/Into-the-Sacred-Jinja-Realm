@@ -13,8 +13,7 @@ public class CameraMovement : MonoBehaviour
     public float jumpForce = 5f;// jump force applied to the player
 
     [Header("Kinect Settings")]
-    private Legs_Listener legs_Listener;
-    private Gestures_Listener gestures_Listener;
+    [SerializeField]private Gestures_Listener gestures_Listener;
 
     [Header("Flags")]
     [SerializeField]private bool canActive = false; // Flag to check if the object can activate the stage
@@ -37,9 +36,7 @@ public class CameraMovement : MonoBehaviour
             canActive = true;
             
         rb = GetComponent<Rigidbody>();
-        legs_Listener = FindFirstObjectByType<Legs_Listener>();
-        gestures_Listener = FindFirstObjectByType<Gestures_Listener>();
-
+        
         Cursor.lockState = CursorLockMode.Locked;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 

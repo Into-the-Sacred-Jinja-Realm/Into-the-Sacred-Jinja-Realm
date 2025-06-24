@@ -8,21 +8,20 @@ public class InvertGravity_Ver2 : MonoBehaviour
     public Vector3 gravitydirection = new Vector3(0, -1, 0);
     public float gravityStrength = 9.81f;
     private Rigidbody rb;
-    private Scene3CamRotate Scene3CamRotate;
+    [SerializeField]private Scene3CamRotate Scene3CamRotate;
 
 
     [Header("Rotation Settings")]
-    public float rotationDuration = 1.0f; // 旋轉持續時間（秒）
+    public float rotationDuration = 1.0f; // Duration for the rotation
     private bool isRotating = false;
-    public float Rduration = 2.0f;
-    public float Pduration = 2.0f;// Duration for the rotation
+    [SerializeField]private float Rduration = 2.0f;
+     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false; // Disable the default gravity
-        Scene3CamRotate = FindFirstObjectByType<Scene3CamRotate>();
     }
 
     // Update is called once per frame
@@ -32,8 +31,7 @@ public class InvertGravity_Ver2 : MonoBehaviour
         {
             invert(); // Call the invert method when the space key is pressed
         }
-        // cam.transform.rotation = Quaternion.LookRotation(playerTransform.position - cam.transform.position, gravitydirection); // Adjust camera rotation to look at player
-        // cam.transform.position = playerTransform.position; // Adjust camera position relative to player
+        
     }
 
 

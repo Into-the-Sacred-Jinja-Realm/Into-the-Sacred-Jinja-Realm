@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AnimationController : MonoBehaviour
 {
@@ -17,7 +16,7 @@ public class AnimationController : MonoBehaviour
     public bool Step4 = false;
 
     private TextureController[] TextureController; // Default scale value
-    private Gestures_Listener gestures_Listener;
+    [SerializeField]private Gestures_Listener gestures_Listener;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,7 +24,6 @@ public class AnimationController : MonoBehaviour
         Animator = GetComponent<Animator>();
         PlayerCamera = Player.GetComponent<Camera>(); // Get the camera component from the player
         TextureController = FindObjectsByType<TextureController>(FindObjectsSortMode.None); // Get the TextureController component
-        gestures_Listener = FindFirstObjectByType<Gestures_Listener>();
         Water.SetActive(false);
     }
 

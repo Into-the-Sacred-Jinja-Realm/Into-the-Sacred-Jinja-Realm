@@ -4,18 +4,14 @@ using UnityEngine;
 public class WashCollider : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private Scene2CamRotate Scene2CamRotate;
-    private CameraMovement CameraMovement;
-    private AnimationController animationController;
-    private IntroFade introFade;
+    [SerializeField]private Scene2CamRotate Scene2CamRotate;
+    [SerializeField]private CameraMovement CameraMovement;
+    [SerializeField]private AnimationController animationController;
+    [SerializeField]private IntroFade introFade;
     public GameObject CheckPoint;
 
     void Start()
     {
-        animationController = FindFirstObjectByType<AnimationController>();
-        Scene2CamRotate = FindFirstObjectByType<Scene2CamRotate>();
-        CameraMovement = FindFirstObjectByType<CameraMovement>();
-        introFade = FindFirstObjectByType<IntroFade>();
         introFade.enabled = false;
         animationController.enabled = false;
     }
@@ -29,13 +25,15 @@ public class WashCollider : MonoBehaviour
             StartCoroutine(Scene2CamRotate.CamRotate(true));
             CameraMovement.ChangeActive();
             introFade.enabled = true;
-            
         }
 
     }
-
-    public void anima()
+    
+    public void PlayAnimation()
     {
-        animationController.enabled = true;
+        if (animationController != null)
+            animationController.enabled = true;
+        else
+            Debug.Log("animationController not found");
     }
 }

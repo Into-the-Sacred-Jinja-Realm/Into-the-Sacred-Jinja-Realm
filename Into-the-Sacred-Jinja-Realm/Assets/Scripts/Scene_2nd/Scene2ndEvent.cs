@@ -1,14 +1,14 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Scene2ndEvent : MonoBehaviour
 {
     public GameObject MaskPlane;
-    public float T = 0f; // Reset T to 0 when PlaneFollow is false
+    public float timer = 0f; // Reset timer to 0 when PlaneFollow is false
     private Transform trans;
     public Material GateMaterial;
     private AudioSource GateAudioSource;
     private bool isSayBye = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,10 +21,10 @@ public class Scene2ndEvent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        T += Time.deltaTime * 0.1f; // Reset T to 0 when PlaneFollow is false
-        T = Mathf.Clamp(T, 0f, 1f); // Clamp T to the range [0, 1]
+        timer += Time.deltaTime * 0.1f; // Reset timer to 0 when PlaneFollow is false
+        timer = Mathf.Clamp(timer, 0f, 1f); // Clamp timer to the range [0, 1]
         if (MaskPlane != null)
-        GateController(T);
+        GateController(timer);
         
         if (GateMaterial.GetFloat("_Alpha") < 0.1f)
         {

@@ -2,33 +2,31 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class AudioController : MonoBehaviour
+public class AudioController_Scene_1 : MonoBehaviour
 {
-    public float ActionTime = 0f;
-    public AudioSource[] AudioSource;
+    [SerializeField] private float ActionTime = 0f;
+    private AudioSource[] AudioSource;
 
     [Header("Walking Audio")]
-    public AudioSource WalkAudio;
+    private AudioSource WalkAudio;
     public AudioClip BridgeWalkClip;
     public AudioClip GroundWalkClip;
     public AudioClip StageWalkClip;
 
     [Header("Background Audio")]
-    public AudioSource BackgroundAudio;
+    private AudioSource BackgroundAudio;
     public AudioClip BackgroundClip;
 
     [Header("Action State")]
     public bool IsAction = false;
 
-    private GroundController groundController;
-    private StageController stageController;
+    [SerializeField] private GroundController groundController;
+    [SerializeField] private StageController stageController;
     private Vector3 LastPosition;
     private Coroutine LoopCoroutine;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        groundController = FindFirstObjectByType<GroundController>();
-        stageController = FindFirstObjectByType<StageController>();
         AudioSource = GetComponents<AudioSource>();
         WalkAudio = AudioSource[0];
         BackgroundAudio = AudioSource[1];

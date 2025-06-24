@@ -5,14 +5,14 @@ public class GetMoneyCollider : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject PlayerHands;
-    private CameraMovement CameraMovement;
     public GameObject Coin;
     public GameObject[] Hands;
     private Animator playerAnim;
 
     public GameObject[] CheckPoint;
 
-    udp_receive_only udp_Receive;
+    [SerializeField]private CameraMovement CameraMovement;
+    [SerializeField] private udp_receive_only udp_Receive;
     void Start()
     {
         playerAnim = PlayerHands.GetComponent<Animator>();
@@ -20,8 +20,7 @@ public class GetMoneyCollider : MonoBehaviour
         {
             hand.GetComponent<Renderer>().enabled = false;
         }
-        CameraMovement = FindFirstObjectByType<CameraMovement>();
-        udp_Receive = FindFirstObjectByType<udp_receive_only>();
+        
         udp_Receive.enabled = false;
         CheckPoint[1].SetActive(false);
     }

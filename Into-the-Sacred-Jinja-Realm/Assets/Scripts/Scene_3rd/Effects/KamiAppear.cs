@@ -7,30 +7,29 @@ using UnityEngine.UI;
 public class KamiAppear : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private Gestures_Listener gestures_Listener;
-    private BloomController bloomController;
-    private FadeController fadeController;
+    [Header("Scripts")]
+    [SerializeField] private Gestures_Listener gestures_Listener;
+    [SerializeField]private BloomController bloomController;
+    [SerializeField]private FadeController fadeController;
 
-    public GameObject[] Kami;
+    [Header("Kami Settings")]
+    private GameObject[] Kami;
     private bool isKamiAppear = false;
+
+    [Header("Fade Settings")]
     public Image Fade_Img;
     public TextMeshProUGUI Fade_text;
 
     void Awake()
     {
-        gestures_Listener = FindFirstObjectByType<Gestures_Listener>();
-        bloomController = FindFirstObjectByType<BloomController>();
-        fadeController = FindFirstObjectByType<FadeController>();
-    }
-
-    void Start()
-    {
         Kami = GameObject.FindGameObjectsWithTag("Kami");
-        foreach (GameObject k in Kami)
-        {
-            k.GetComponent<Renderer>().material.SetFloat("_Alpha", 0f);
-        }
-        
+        if (Kami != null)
+            foreach (GameObject kamiparent in Kami)
+            {
+                kamiparent.GetComponent<Renderer>().material.SetFloat("_Alpha", 0f);
+            }
+        else
+            Debug.Log("Not Found Kami Parents");
     }
 
     // Update is called once per frame
@@ -62,9 +61,9 @@ public class KamiAppear : MonoBehaviour
         while (timer < 1f)
         {
             timer += Time.deltaTime;
-            foreach (GameObject k in Kami)
+            foreach (GameObject kamiparent in Kami)
             {
-                k.GetComponent<Renderer>().material.SetFloat("_Alpha", Mathf.Lerp(0f, 1f, timer));
+                kamiparent.GetComponent<Renderer>().material.SetFloat("_Alpha", Mathf.Lerp(0f, 1f, timer));
             }
             yield return null;
             if (timer >= 1f)
@@ -81,9 +80,9 @@ public class KamiAppear : MonoBehaviour
         while (timer < 1f)
         {
             timer += Time.deltaTime;
-            foreach (GameObject k in Kami)
+            foreach (GameObject kamiparent in Kami)
             {
-                k.GetComponent<Renderer>().material.SetFloat("_Alpha", Mathf.Lerp(1f, 0f, timer));
+                kamiparent.GetComponent<Renderer>().material.SetFloat("_Alpha", Mathf.Lerp(1f, 0f, timer));
             }
             yield return null;
             if (timer >= 1f)

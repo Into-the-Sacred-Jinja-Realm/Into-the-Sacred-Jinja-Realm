@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 254828449}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Scene_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cb1c22e2de5b94d8607c7548866cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 1286753873}
   TextureScale: 1
 --- !u!1 &286302204
 GameObject:
@@ -275,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cb1c22e2de5b94d8607c7548866cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 1286753873}
   TextureScale: 1
 --- !u!1 &300230405
 GameObject:
@@ -656,7 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaskPlane: {fileID: 1252357786}
-  T: 0
+  timer: 0
   GateMaterial: {fileID: 2100000, guid: 0d063d4402e78554599500936a274847, type: 2}
 --- !u!114 &330585557
 MonoBehaviour:
@@ -671,10 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionTime: 0
-  AudioSource: []
-  WalkAudio: {fileID: 0}
   WalkClip: {fileID: 8300000, guid: db6d2d1399d493c4a88d2bc6fecb936f, type: 3}
-  BackgroundAudio: {fileID: 0}
   BackgroundClip: {fileID: 8300000, guid: 40c936573b04fdd4ab4556d5581c0b0e, type: 3}
   IsAction: 0
 --- !u!114 &330585558
@@ -702,7 +701,6 @@ GameObject:
   - component: {fileID: 390930481}
   - component: {fileID: 390930480}
   - component: {fileID: 390930479}
-  - component: {fileID: 390930483}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -799,18 +797,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1645380427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &390930483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 390930478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 686261e1db9a95e40b82d1f8266e0940, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,7 +975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: df67b8e827a187e4bb8f1adecbd8a097, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.1214905
+      value: 10.41
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: df67b8e827a187e4bb8f1adecbd8a097, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1302,6 +1288,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: df67b8e827a187e4bb8f1adecbd8a097, type: 3}
       propertyPath: m_Name
       value: "\u64BF\u52FA\u5B50"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: df67b8e827a187e4bb8f1adecbd8a097, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2136871867427965080, guid: df67b8e827a187e4bb8f1adecbd8a097, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2115,6 +2105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef92afef2a0915546ad27fe03e9a89fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Scene2CamRotate: {fileID: 330585558}
+  CameraMovement: {fileID: 1458867049}
+  animationController: {fileID: 1286753874}
+  introFade: {fileID: 872357891}
   CheckPoint: {fileID: 1080690470}
 --- !u!1 &791070250 stripped
 GameObject:
@@ -2135,23 +2129,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextureScale: 0
   IsAnimationPlaying: 0
---- !u!1 &800175406 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 67a30ffb809dc2a49860be15debf28fb, type: 3}
-  m_PrefabInstance: {fileID: 934349124}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &800175407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 800175406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 686261e1db9a95e40b82d1f8266e0940, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,6 +2333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34eab31d7d587514eacd197a38308cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  washCollider: {fileID: 744985868}
   BackGroundImg: {fileID: 1685741842}
   StartImage: {fileID: 286302206}
   StartImgText: {fileID: 980186465}
@@ -2501,10 +2479,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 67a30ffb809dc2a49860be15debf28fb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 800175407}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67a30ffb809dc2a49860be15debf28fb, type: 3}
 --- !u!1 &968811163
 GameObject:
@@ -2799,6 +2774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cb1c22e2de5b94d8607c7548866cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 1286753873}
   TextureScale: 1
 --- !u!1 &1080690470
 GameObject:
@@ -2927,6 +2903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cb1c22e2de5b94d8607c7548866cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 1286753873}
   TextureScale: 1
 --- !u!1 &1131551384
 GameObject:
@@ -3350,7 +3327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80cf5c269bab5324d8c1a77b58c5b3a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 0}
+  Animator: {fileID: 1286753873}
   Player: {fileID: 330585546}
   LookTarget: {fileID: 300230405}
   HandsMaterial: {fileID: 2100000, guid: b4ccf77b420692e4d89abc0a44670cbf, type: 2}
@@ -3359,6 +3336,7 @@ MonoBehaviour:
   Step2: 0
   Step3: 0
   Step4: 0
+  gestures_Listener: {fileID: 1477355822}
 --- !u!4 &1286753875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: df67b8e827a187e4bb8f1adecbd8a097, type: 3}
@@ -3588,7 +3566,6 @@ Transform:
   m_Children:
   - {fileID: 2055174844}
   - {fileID: 1882517033}
-  - {fileID: 1477355821}
   - {fileID: 721454715}
   - {fileID: 981634094}
   m_Father: {fileID: 0}
@@ -4019,6 +3996,7 @@ MonoBehaviour:
   cameraTransform: {fileID: 330585546}
   rotationSpeed: 5
   jumpForce: 5
+  gestures_Listener: {fileID: 1477355822}
   canActive: 0
   waitTime: 8
   DefaultSpeed: 30
@@ -4157,6 +4135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cb1c22e2de5b94d8607c7548866cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 1286753873}
   TextureScale: 1
 --- !u!1 &1471574209 stripped
 GameObject:
@@ -4197,7 +4176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80cf5c269bab5324d8c1a77b58c5b3a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 0}
+  Animator: {fileID: 1471574211}
   Player: {fileID: 330585546}
   LookTarget: {fileID: 0}
   HandsMaterial: {fileID: 2100000, guid: b4ccf77b420692e4d89abc0a44670cbf, type: 2}
@@ -4206,6 +4185,7 @@ MonoBehaviour:
   Step2: 0
   Step3: 0
   Step4: 0
+  gestures_Listener: {fileID: 1477355822}
 --- !u!114 &1471574214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4236,7 +4216,6 @@ GameObject:
   - component: {fileID: 1477355820}
   - component: {fileID: 1477355819}
   - component: {fileID: 1477355822}
-  - component: {fileID: 1477355823}
   m_Layer: 0
   m_Name: Kinect_Controller
   m_TagString: Untagged
@@ -4322,11 +4301,11 @@ Transform:
   m_GameObject: {fileID: 1477355817}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -389.00436, y: 76.6, z: -1527.3557}
+  m_LocalPosition: {x: -3.6837158, y: 2.4140854, z: 0.626709}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1404097812}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1477355822
 MonoBehaviour:
@@ -4338,20 +4317,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d067bc883271154981bd900f569c5f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerIndex: 0
-  gestureInfo: {fileID: 494281728}
---- !u!114 &1477355823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1477355817}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a0c35dbd94c7484a8d871500bee19da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 0
@@ -4679,6 +4644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cb1c22e2de5b94d8607c7548866cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 1286753873}
   TextureScale: 1
 --- !u!1 &1859742043
 GameObject:
@@ -4847,6 +4813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cb1c22e2de5b94d8607c7548866cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 1286753873}
   TextureScale: 1
 --- !u!23 &1862515810
 MeshRenderer:
@@ -5005,6 +4972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cb1c22e2de5b94d8607c7548866cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 1286753873}
   TextureScale: 1
 --- !u!1 &1920273375
 GameObject:
@@ -5159,6 +5127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cb1c22e2de5b94d8607c7548866cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 1286753873}
   TextureScale: 1
 --- !u!4 &1990056085 stripped
 Transform:
@@ -5427,3 +5396,4 @@ SceneRoots:
   - {fileID: 254828449}
   - {fileID: 1131551386}
   - {fileID: 1404097812}
+  - {fileID: 1477355821}

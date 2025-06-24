@@ -1,15 +1,12 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class Scene2CamRotate : MonoBehaviour
 {
-    private AnimationController AnimationController;
     public float duration = 0f;
     private Quaternion StartRotation;// Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        AnimationController = FindFirstObjectByType<AnimationController>();
         StartRotation = transform.rotation;
     }
 

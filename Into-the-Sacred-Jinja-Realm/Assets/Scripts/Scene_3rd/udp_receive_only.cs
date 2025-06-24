@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using System;
 
 
 public class udp_receive_only : MonoBehaviour
@@ -13,7 +12,7 @@ public class udp_receive_only : MonoBehaviour
     private byte[] receiveByte;
     private string receiveData = ""; //輸出資料
     private bool IsThrowCoin = false; // 新增旗標
-    MoneyBoxCollider MoneyBox;
+    [SerializeField]private MoneyBoxCollider MoneyBox;
 
     void Start()
     {
@@ -25,7 +24,6 @@ public class udp_receive_only : MonoBehaviour
         receiveThread.IsBackground = true;
         receiveThread.Start();
         Debug.Log("server started");
-        MoneyBox = FindFirstObjectByType<MoneyBoxCollider>();
     }
     
     void Update()

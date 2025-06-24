@@ -1,22 +1,24 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
+[RequireComponent(typeof(ToriiAndGateController))]
 public class StageController : MonoBehaviour
 {
     [Header("Stage Animator")]
     public Animator StageAnimator;
     private ToriiAndGateController ToriiAndGateController;
-    public float GateTime = 0f;
-    public float ToriiTime = 0f;
+    [SerializeField]private float GateTime = 0f;
+    [SerializeField]private float ToriiTime = 0f;
 
     [Header("State")]
     public bool IsStage = false;
     public bool IsGateOpen = false;
 
-    private GroundController GroundControll;
+    [SerializeField]private GroundController GroundControll;
+    private CameraMovement[] CameraMovements;
 
     [Header("Audio Settings")]
-    public AudioSource StoneAudioSource;
+    private AudioSource StoneAudioSource;
 
     public GameObject StageOb;
     // Reference to the audio source for stone sound
@@ -24,8 +26,8 @@ public class StageController : MonoBehaviour
     private void Awake()
     {
         ToriiAndGateController = GetComponent<ToriiAndGateController>();
-        GroundControll = FindFirstObjectByType<GroundController>();
         StoneAudioSource = GetComponent<AudioSource>();
+        CameraMovements = FindObjectsByType<CameraMovement>(FindObjectsSortMode.None);
     }
     private void Update()
     {
@@ -36,28 +38,27 @@ public class StageController : MonoBehaviour
     }
     void AfterEffect()
     {
-            if (StageAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f && StageAnimator.GetCurrentAnimatorStateInfo(0).IsName("StageAnimation"))
-            {
-                ToriiTime += Time.deltaTime * 0.25f;
-                ToriiTime = Mathf.Clamp(ToriiTime, 0f, 1f);
-                ToriiAndGateController.ToriiController(ToriiTime);
-                Debug.LogWarning("ToriiTime");
-            }
-            if (ToriiTime > 0.5f)
-            {
-                GateTime += Time.deltaTime * 0.25f; // Increment GateTime based on delta time
-                GateTime = Mathf.Clamp(GateTime, 0f, 1f);
-                ToriiAndGateController.GateController(GateTime);
-                Debug.LogWarning("GateTime"); // Debug log for GateTime
-            }
-            if (GateTime >= 1f)
-            {
-                IsGateOpen = true; // Reset the stage flag
-            }
+        if (StageAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f && StageAnimator.GetCurrentAnimatorStateInfo(0).IsName("StageAnimation"))
+        {
+            ToriiTime += Time.deltaTime * 0.25f;
+            ToriiTime = Mathf.Clamp(ToriiTime, 0f, 1f);
+            ToriiAndGateController.ToriiController(ToriiTime);
+            Debug.LogWarning("ToriiTime");
+        }
+        if (ToriiTime > 0.5f)
+        {
+            GateTime += Time.deltaTime * 0.25f; // Increment GateTime based on delta time
+            GateTime = Mathf.Clamp(GateTime, 0f, 1f);
+            ToriiAndGateController.GateController(GateTime);
+            Debug.LogWarning("GateTime"); // Debug log for GateTime
+        }
+        if (GateTime >= 1f)
+        {
+            IsGateOpen = true; // Reset the stage flag
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
-        var CameraMovements = FindObjectsByType<CameraMovement>(FindObjectsSortMode.None);
         if (other.CompareTag("Player"))
         {
             StageOb.GetComponent<Renderer>().enabled = false;

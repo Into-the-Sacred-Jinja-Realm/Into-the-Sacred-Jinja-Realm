@@ -530,6 +530,7 @@ MonoBehaviour:
   - {fileID: 1064028693, guid: a6ea68c441600a04d95f52978decdf0c, type: 3}
   - {fileID: -1804990332, guid: 26fba4acef2e924488f10c7d80a8527d, type: 3}
   - {fileID: -589566537, guid: 99464a0224daf9b4d9985ee858ec8daa, type: 3}
+  fadeController: {fileID: 566939497}
   Fade_Img: {fileID: 780688891}
   Success_Screen: {fileID: 1401451152}
   Fade_Text: {fileID: 2136155728}
@@ -553,7 +554,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566939491}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34eab31d7d587514eacd197a38308cfa, type: 3}
   m_Name: 
@@ -737,7 +738,6 @@ GameObject:
   - component: {fileID: 1030599700}
   - component: {fileID: 1030599702}
   - component: {fileID: 1030599704}
-  - component: {fileID: 1030599705}
   m_Layer: 0
   m_Name: Kinect_Controller
   m_TagString: Untagged
@@ -843,20 +843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60b976a1901bb5d478901026c07729cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1030599705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1030599697}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a0c35dbd94c7484a8d871500bee19da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerIndex: 0
-  gestureInfo: {fileID: 1880068762}
 --- !u!1001 &1082112973
 PrefabInstance:
   m_ObjectHideFlags: 0

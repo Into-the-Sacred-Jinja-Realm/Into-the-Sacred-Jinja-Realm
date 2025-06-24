@@ -2,25 +2,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class Scene_1st_Event : MonoBehaviour
 {
 
     [Header("Fade Settings")]
     public Image Fade_Img;
     public TextMeshProUGUI Fade_Text;
-    private FadeController fadeController;
 
-    private CameraMovement cameraMovement;
-    private Gestures_Listener gestures_Listener;
+    [SerializeField]private FadeController fadeController;
+    [SerializeField]private CameraMovement cameraMovement;
+    [SerializeField]private Gestures_Listener gestures_Listener;
+
+
     private bool canmove = false;
     private bool isTrigger = false;
-    void Awake()
-    {
-        fadeController = FindFirstObjectByType<FadeController>();
-        cameraMovement = FindFirstObjectByType<CameraMovement>();
-        gestures_Listener = FindFirstObjectByType<Gestures_Listener>();
-    }
     
+
     void Start()
     {
 
@@ -28,7 +26,7 @@ public class Scene_1st_Event : MonoBehaviour
             StartCoroutine(fadeController.FadeOut(Fade_Img, Fade_Text, 3f));
     }
 
-    
+
     void Update()
     {
         //Request player need to raise both hands before moving
@@ -42,6 +40,6 @@ public class Scene_1st_Event : MonoBehaviour
             isTrigger = true;
             cameraMovement.ChangeActive(0.5f);
         }
-            
+
     }
 }

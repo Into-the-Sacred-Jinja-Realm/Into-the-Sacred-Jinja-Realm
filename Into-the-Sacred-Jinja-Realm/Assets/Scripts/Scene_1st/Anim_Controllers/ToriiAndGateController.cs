@@ -31,12 +31,9 @@ public class ToriiAndGateController : MonoBehaviour
     }
     public void GateController(float T)
     {
-        
-        float GateAlphaValue = 0f;
-        float GateEffectStrength = 0f;
         GateAudioSource.volume = Mathf.Lerp(0f, 1f, T); ; // Reset the volume of the audio source
-        GateAlphaValue = Mathf.Lerp(0f, 1.5f, T);
-        GateEffectStrength = Mathf.Lerp(0f, 1f, T);
+        float GateAlphaValue = Mathf.Lerp(0f, 1.5f, T);
+        float GateEffectStrength = Mathf.Lerp(0f, 1f, T);
         GateMaterial.SetFloat("_Alpha", GateAlphaValue);
         GateMaterial.SetFloat("_EffectStrength", GateEffectStrength);
     }

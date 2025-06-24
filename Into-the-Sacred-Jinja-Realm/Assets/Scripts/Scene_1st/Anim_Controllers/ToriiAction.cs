@@ -7,10 +7,9 @@ public class ToriiAction : MonoBehaviour
     public GameObject Player;
 
     private float ActionTime = 0f;
-    private GroundController groundController;
+    [SerializeField]private GroundController groundController;
     private void Awake()
     {
-        groundController = FindFirstObjectByType<GroundController>();
         Player = GameObject.FindGameObjectWithTag("Player");
     }
     void Start()

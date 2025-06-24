@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Scene3CamRotate : MonoBehaviour
 {
-    private AnimationController AnimationController;
     public float duration = 0f;
     private float TargetRotation; // Target rotation angle
     public bool IsScene3 = false;
@@ -21,7 +20,7 @@ public class Scene3CamRotate : MonoBehaviour
     {
         if (Rotating)
         {
-            StartCoroutine(CamRotate(TargetRotation));
+            StartCoroutine(CamRotate());
             Rotating = false; // Set the flag to false to prevent multiple rotations
         }
         float CurrentRotation = transform.rotation.eulerAngles.x;
@@ -32,7 +31,7 @@ public class Scene3CamRotate : MonoBehaviour
     }
 
     // Update is called once per frame
-    public IEnumerator CamRotate(float TargetRotation)
+    public IEnumerator CamRotate()
     {
         TargetRotation = StartRotation.eulerAngles.x - 45f;
         float CurrentRotation = transform.rotation.eulerAngles.x;

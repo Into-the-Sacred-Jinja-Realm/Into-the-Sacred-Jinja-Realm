@@ -2,13 +2,8 @@ using UnityEngine;
 
 public class AfterWash : MonoBehaviour
 {
-    private Animator Animator;
+    public Animator Animator;
     public float TextureScale = 1f; // Default scale value
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Animator = FindFirstObjectByType<Animator>();
-    }
 
     // Update is called once per frame
     void Update()

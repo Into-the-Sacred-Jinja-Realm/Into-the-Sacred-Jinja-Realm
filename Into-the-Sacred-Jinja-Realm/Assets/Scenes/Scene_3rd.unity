@@ -226,9 +226,9 @@ GameObject:
   - component: {fileID: 103125829}
   - component: {fileID: 103125830}
   - component: {fileID: 103125831}
+  - component: {fileID: 103125834}
   - component: {fileID: 103125833}
   - component: {fileID: 103125832}
-  - component: {fileID: 103125834}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -561,10 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionTime: 0
-  AudioSource: []
-  WalkAudio: {fileID: 0}
   WalkClip: {fileID: 8300000, guid: db6d2d1399d493c4a88d2bc6fecb936f, type: 3}
-  BackgroundAudio: {fileID: 0}
   BackgroundClip: {fileID: 8300000, guid: 0c96a7be0b479774a8932999b0bc66fb, type: 3}
   IsAction: 0
 --- !u!114 &103125830
@@ -606,7 +603,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103125822}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -690,6 +687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Fade_Img: {fileID: 772124122}
   Fade_text: {fileID: 1609128774}
+  fadeController: {fileID: 450717698}
 --- !u!1 &111175123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,6 +2098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34eab31d7d587514eacd197a38308cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  washCollider: {fileID: 0}
   BackGroundImg: {fileID: 1457484892}
   StartImage: {fileID: 349638750}
   StartImgText: {fileID: 1521691167}
@@ -3622,6 +3621,8 @@ MonoBehaviour:
   CheckPoint:
   - {fileID: 1108163944}
   - {fileID: 1889754095}
+  CameraMovement: {fileID: 949943316}
+  udp_Receive: {fileID: 1044199573}
 --- !u!1001 &830839227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3752,7 +3753,6 @@ GameObject:
   - component: {fileID: 949943316}
   - component: {fileID: 949943322}
   - component: {fileID: 949943324}
-  - component: {fileID: 949943323}
   m_Layer: 0
   m_Name: Player_Cam
   m_TagString: Player
@@ -3775,6 +3775,7 @@ MonoBehaviour:
   cameraTransform: {fileID: 103125825}
   rotationSpeed: 5
   jumpForce: 5
+  gestures_Listener: {fileID: 1111344789}
   canActive: 0
   waitTime: 8
   DefaultSpeed: 100
@@ -3917,24 +3918,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.39, y: 12.64, z: 1.0000001}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &949943323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 949943315}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d51a5df331c3d4bb0b582a1c7c3198, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 103125824}
-  playerTransform: {fileID: 949943321}
-  gravitydirection: {x: 0, y: -10, z: 0}
-  gravityStrength: 9.81
-  rotationDuration: 3
-  duration: 2
 --- !u!114 &949943324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3951,9 +3934,9 @@ MonoBehaviour:
   playerTransform: {fileID: 949943321}
   gravitydirection: {x: 0, y: -20, z: 0}
   gravityStrength: 9.81
+  Scene3CamRotate: {fileID: 103125830}
   rotationDuration: 1
   Rduration: 2
-  Pduration: 2
 --- !u!1001 &1002235365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4209,6 +4192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359130f0cedc32645a7a94adbd1a7389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoneyBox: {fileID: 1546520422}
 --- !u!4 &1044199574
 Transform:
   m_ObjectHideFlags: 0
@@ -4530,7 +4514,6 @@ GameObject:
   - component: {fileID: 1111344788}
   - component: {fileID: 1111344787}
   - component: {fileID: 1111344786}
-  - component: {fileID: 1111344785}
   - component: {fileID: 1111344789}
   m_Layer: 0
   m_Name: Kinect_Controller
@@ -4539,20 +4522,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1111344785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111344784}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a0c35dbd94c7484a8d871500bee19da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerIndex: 0
-  gestureInfo: {fileID: 392493708}
 --- !u!114 &1111344786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6279,6 +6248,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerHands: {fileID: 3705181}
   Coin: {fileID: 1908970563}
+  CameraMovement: {fileID: 949943316}
+  BloomController: {fileID: 2106908648}
+  kamiAppear: {fileID: 1561796272}
   CheckPoint: {fileID: 1889754095}
 --- !u!64 &1546520423
 MeshCollider:
@@ -6399,7 +6371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb3d189b9d5cc5449de41704e4cf4ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Kami: []
+  gestures_Listener: {fileID: 1111344789}
+  bloomController: {fileID: 2106908648}
+  fadeController: {fileID: 450717698}
   Fade_Img: {fileID: 772124122}
   Fade_text: {fileID: 1609128774}
 --- !u!4 &1561796273

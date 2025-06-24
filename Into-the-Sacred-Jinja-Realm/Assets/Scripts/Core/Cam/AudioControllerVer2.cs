@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class AudioControllerVer2 : MonoBehaviour
 {
-    public float ActionTime = 0f;
-    public AudioSource[] AudioSource;
+    [SerializeField]private float ActionTime = 0f;
+    private AudioSource[] AudioSource;
 
     [Header("Walking Audio")]
-    public AudioSource WalkAudio;
+    private AudioSource WalkAudio;
     public AudioClip WalkClip;
 
     [Header("Background Audio")]
-    public AudioSource BackgroundAudio;
+    private AudioSource BackgroundAudio;
     public AudioClip BackgroundClip;
 
     [Header("Action State")]
@@ -67,12 +67,12 @@ public class AudioControllerVer2 : MonoBehaviour
         }
 
     }
-    IEnumerator AudioLoop(AudioSource Source)
+    private IEnumerator AudioLoop(AudioSource Source)
     {
         while (true)
         {
-            float Sagment = UnityEngine.Random.Range(2f, 4f);
-            float Start = UnityEngine.Random.Range(0f, Source.clip.length - Sagment);
+            float Sagment = Random.Range(2f, 4f);
+            float Start = Random.Range(0f, Source.clip.length - Sagment);
             Source.time = Start;
             Source.Play();
             yield return new WaitForSeconds(Sagment);
@@ -80,7 +80,7 @@ public class AudioControllerVer2 : MonoBehaviour
             Source.Stop();
         }
     }
-    void BackgroundAudioLow(bool IsAction)
+    private void BackgroundAudioLow(bool IsAction)
     {
         if (IsAction)
         {

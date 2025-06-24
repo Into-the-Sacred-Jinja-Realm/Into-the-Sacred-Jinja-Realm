@@ -12,16 +12,6 @@ public class Gate_Listener : MonoBehaviour
         material.SetFloat("_Alpha", 0f);
     }
 
-    // // Update is called once per frame
-    // void Update()
-    // {
-    //     if (material.GetFloat("_Alpha") < 0.1f)
-    //     {
-    //         Debug.Log("Bye");
-    //         DestroyImmediate(gameObject);
-    //     }
-    // }
-
     void OnTriggerEnter(Collider other)
     {
 
@@ -30,7 +20,6 @@ public class Gate_Listener : MonoBehaviour
             Debug.LogWarning("Enter Gate Trigger");
             StartCoroutine(LoadNewScene("Scene_2nd"));
         }
-        // 進入 Trigger 區域後就銷毀自己
     }
 
     IEnumerator LoadNewScene(string sceneName)
